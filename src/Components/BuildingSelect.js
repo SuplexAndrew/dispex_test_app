@@ -16,12 +16,12 @@ export const BuildingSelect = () => {
 
   const onFirstOpen = () => {
     const street = store.getState().address.selectedStreet
-    if (selectedBuilding === '' && street?.id) {
+    if (street?.id) {
       getBuildings(street.id)
     }
   }
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} disabled={!open}>
+    <FormControl sx={{m: 1, minWidth: 100}} disabled={!open}>
       <InputLabel>Дом</InputLabel>
       <Select value={selectedBuilding}
               onOpen={onFirstOpen}

@@ -30,11 +30,19 @@ export const AddressReducer = (state = InitialState, action) => {
       return {...state, loading: true, error: null, needed: false }
 
     case addressActionTypes.FETCH_BUILDINGS_SUCCESS:
-      console.log(action.payload)
       return {...state, loading: false, error: null, buildings: action.payload, needed: false }
 
     case addressActionTypes.SELECT_BUILDING:
       return {...state, selectedBuilding: action.payload}
+
+    case addressActionTypes.FETCH_FLAT:
+      return {...state, loading: true, error: null, needed: false }
+
+    case addressActionTypes.FETCH_FLAT_SUCCESS:
+      return {...state, loading: false, error: null, flats: action.payload, needed: false }
+
+    case addressActionTypes.SELECT_FLAT:
+      return {...state, selectedFlat: action.payload}
 
     default:
       return state
