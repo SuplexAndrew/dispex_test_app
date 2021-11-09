@@ -1,33 +1,34 @@
 import {useState} from "react";
 import {useStore} from "react-redux";
 import {useActions} from "../Hooks/useActions";
-import {MenuItem, Select} from "@mui/material";
+import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 export const StreetSelect = () => {
   const store = useStore()
   const {getStreets, selectStreet} = useActions()
   const [streetItems, setStreetItems] = useState([])
   const [selectedAddress, setSelectedAddress] = useState('')
-  // console.log(selectedAddress)
-  store.subscribe(() => setStreetItems(store.getState().streets.items))
-  store.subscribe(() => setSelectedAddress(store.getState().streets.selected))
+
+  store.subscribe(() => setStreetItems(store.getState().address.streets))
+  store.subscribe(() => setSelectedAddress(store.getState().address.selectedStreet))
 
   const onFirstOpen = () => {
-    if (streetItems.length < 2) {
+    if (selectedAddress === '') {
       getStreets()
     }
   }
 
   return (
-    <div>
-        <Select label='Адрес' value={selectedAddress}
-                onOpen={onFirstOpen}
+    <FormControl sx={{m: 1, minWidth: 120}}>
+      <InputLabel>Улица</InputLabel>
+      <Select value={selectedAddress}
+              onOpen={onFirstOpen}
               onChange={(e) => selectStreet(e.target.value)}>
         {
-          streetItems.map((address) =>
+          streetItems?.map((address) =>
             <MenuItem value={address} key={address.id}>{address.name}</MenuItem>)
         }
       </Select>
-    </div>
+    </FormControl>
   )
 }

@@ -1,5 +1,5 @@
-import {StreetReducer} from "./StreetReducer";
+import {AddressReducer} from "./AddressReducer";
 
 export {
-  StreetReducer
+  AddressReducer
 }

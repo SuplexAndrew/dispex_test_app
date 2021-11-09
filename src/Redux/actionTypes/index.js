@@ -1,5 +1,5 @@
-import {streetActionTypes} from './streetActionTypes'
+import {addressActionTypes} from './addressActionTypes'
 
 export {
-  streetActionTypes
+  addressActionTypes
 }
