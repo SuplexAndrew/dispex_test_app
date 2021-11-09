@@ -19,7 +19,7 @@ export const StreetSelect = () => {
   }
 
   return (
-    <FormControl sx={{m: 1, minWidth: 180}}>
+    <FormControl sx={{m: 1, minWidth: 180, background: '#eccd30', boxShadow: 4}}>
       <InputLabel>Улица</InputLabel>
       <Select value={selectedAddress}
               onOpen={onFirstOpen}

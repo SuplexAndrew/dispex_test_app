@@ -21,7 +21,7 @@ export const BuildingSelect = () => {
     }
   }
   return (
-    <FormControl sx={{m: 1, minWidth: 100}} disabled={!open}>
+    <FormControl sx={{m: 1, minWidth: 100, background: open ? '#eccd30' : '#d0d0d0', boxShadow: 4}} disabled={!open}>
       <InputLabel>Дом</InputLabel>
       <Select value={selectedBuilding}
               onOpen={onFirstOpen}

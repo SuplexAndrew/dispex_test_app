@@ -1,5 +1,7 @@
 import {AddressReducer} from "./AddressReducer";
+import {ClientReducer} from "./ClientReducer";
 
 export {
-  AddressReducer
+  AddressReducer,
+  ClientReducer
 }
