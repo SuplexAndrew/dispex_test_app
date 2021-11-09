@@ -20,8 +20,8 @@ export const AddressReducer = (state = InitialState, action) => {
     case addressActionTypes.FETCH_STREETS_SUCCESS:
       return {...state, loading: false, error: null, streets: action.payload, needed: false }
 
-    case addressActionTypes.FETCH_STREETS_ERROR:
-      return {...state, loading: false, error: action.payload, streets: state.streets, needed: false }
+    case addressActionTypes.FETCH_ERROR:
+      return {...state, loading: false, error: action.payload, needed: false }
 
     case addressActionTypes.SELECT_STREET:
       return {...state, selectedStreet: action.payload}
@@ -32,9 +32,6 @@ export const AddressReducer = (state = InitialState, action) => {
     case addressActionTypes.FETCH_BUILDINGS_SUCCESS:
       console.log(action.payload)
       return {...state, loading: false, error: null, buildings: action.payload, needed: false }
-
-    case addressActionTypes.FETCH_BUILDINGS_ERROR:
-      return {...state, loading: false, error: action.payload, buildings: state.streets, needed: false }
 
     case addressActionTypes.SELECT_BUILDING:
       return {...state, selectedBuilding: action.payload}

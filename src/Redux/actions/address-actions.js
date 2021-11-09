@@ -9,7 +9,7 @@ const getStreets = () => {
       const res = await axios.get(api.streets())
       dispatch({type: addressActionTypes.FETCH_STREETS_SUCCESS, payload: res.data})
     } catch (err) {
-      dispatch({type: addressActionTypes.FETCH_STREETS_ERROR, payload: err.message})
+      dispatch({type: addressActionTypes.FETCH_ERROR, payload: err.message})
     }
   }
 }
@@ -27,7 +27,7 @@ const getBuildings = (id) => {
       const res = await axios.get(api.building(id))
       dispatch({type: addressActionTypes.FETCH_BUILDINGS_SUCCESS, payload: res.data})
     } catch (err) {
-      dispatch({type: addressActionTypes.FETCH_BUILDINGS_ERROR, payload: err.message})
+      dispatch({type: addressActionTypes.FETCH_ERROR, payload: err.message})
     }
   }
 }
