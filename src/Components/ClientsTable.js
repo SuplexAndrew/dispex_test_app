@@ -2,19 +2,19 @@ import * as React from 'react';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton} from '@mui/material';
 
 import {useStore} from "react-redux";
-// import {useActions} from "../Hooks/useActions";
 import {useState} from "react";
 import UpdateIcon from '@mui/icons-material/Update';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {useActions} from "../Hooks/useActions";
 
 export const ClientsTable = () => {
   const store = useStore()
-  // const {getStreets, selectStreet} = useActions()
+  const {updateClient, deleteClient} = useActions()
   const [clients, setClients] = useState([])
   store.subscribe(() => setClients(store.getState().client.clients))
 
   return (
-    <TableContainer sx={{margin: 3, width: '98%', height: '82vh'}} component={Paper}>
+    <TableContainer sx={{m: 3, width: '98%', height: '82vh'}} component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -28,18 +28,18 @@ export const ClientsTable = () => {
         </TableHead>
         <TableBody>
           {clients.map((client, index) =>
-            <TableRow>
+            <TableRow key={index}>
               <TableCell>{index + 1}</TableCell>
               <TableCell>{client.name !== '' ? client.name : '-'}</TableCell>
               <TableCell>{client.phone}</TableCell>
               <TableCell>{client.email !== '' ? client.email : '-'}</TableCell>
               <TableCell>
-                <IconButton>
+                <IconButton onClick={() => updateClient(client)}>
                   <UpdateIcon/>
                 </IconButton>
               </TableCell>
               <TableCell>
-                <IconButton>
+                <IconButton onClick={() => deleteClient(client)}>
                   <DeleteIcon/>
                 </IconButton>
               </TableCell>
